@@ -12,6 +12,10 @@ module.exports = {
         black: '#232528',
         darkblue: '2a2a72',
         white: '#eaf6ff'
+      },
+      screens: {
+        s: '480px',
+        xs: '360px'
       }
     }
   },
