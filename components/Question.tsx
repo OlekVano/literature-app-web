@@ -26,20 +26,26 @@ export default function Question({ state, validated, selectedOption, setSelected
 
   return (
     <div>
-      <h1 className='text-center font-bold text-4xl mb-6 text-white'>{state.question}</h1>
+      <h1 className='text-center font-bold text-4xl max-s:text-3xl mb-6 text-white'>{state.question}</h1>
       <div className='flex justify-center mb-6'>
-        <div className={`flex ${isImageQuestion ? 'flex-row' : 'flex-col'}`}>
+        <div className={`flex ${!isImageQuestion ? 'flex-col' : 'flex-wrap w-full'}`}>
         {state?.options.map((option, i) => {
-          return <div className={`flex text-2xl ${validated && option == state.answer ? 'bg-green-500' : validated && option == selectedOption ? 'bg-red-500' : 'bg-transparent'}`} key={i}>
-            <div className='p-1'><input className='h-6 w-6 orange' type='radio' disabled={validated} checked={selectedOption == '' ? false : undefined} onClick={() => handleInputClick(option)} name='option' id={stringToId(option)} /></div>
-            <label htmlFor={stringToId(option)} className='relative block'>
-              {
-                isImageQuestion ? <Image src={option} alt='Writer' width={200} height={200} className='pointer-events-none select-none p-3'></Image> :
-                <>{option}</>
-              }
-              
-            </label>
-          </div>
+          return (
+            <div className={`p-1 md:p-2 ${isImageQuestion ? 'w-1/2 md:w-1/4 aspect-square' : ''}`} key={i}>
+              <div className={`w-full h-full flex ${validated && option == state.answer ? 'bg-green-500' : validated && option == selectedOption ? 'bg-red-500' : 'bg-transparent'}`}>
+              <div className='p-1'>
+                <input className='h-6 w-6 orange' type='radio' disabled={validated} checked={selectedOption == '' ? false : undefined} onClick={() => handleInputClick(option)} name='option' id={stringToId(option)} />
+              </div>
+              <label htmlFor={stringToId(option)} className='relative block flex-1 s:text-2xl text-xl'>
+                {
+                  isImageQuestion ? <Image src={option} alt='Writer' fill className='pointer-events-none select-none p-3 object-cover'></Image> :
+                  <>{option}</>
+                }
+
+              </label>
+              </div>
+            </div>
+          )
         })}
         </div>
       </div>

@@ -9,7 +9,7 @@ interface State {
   answer: string
 }
 
-export default function random() {
+export default function Random() {
   const [state, setState]: [State | null, Function] = useState(null)
   const [validated, setValidated] = useState(false)
   const [selectedOption, setSelectedOption] = useState('')
@@ -39,7 +39,7 @@ export default function random() {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <main className='h-full flex flex-col justify-center items-center'>
+    <main className='min-h-screen flex flex-col justify-center items-center pt-7 pb-7'>
       <Question state={state} validated={validated} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
       <Button1 text={validated ? 'Наступне' : 'Перевірити'} func={validated ? newQuestion : () => setValidated(true)} />
     </main>
