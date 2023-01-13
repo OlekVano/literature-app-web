@@ -34,8 +34,8 @@ export default function Random() {
   return (
     <>
     <Head>
-      <title>App Name</title>
-      <meta name="description" content="Перевір свої знання літератури!" />
+      <title>Перевір свої знання з літератури!</title>
+      <meta name="description" content="Перевір свої знання з літератури!" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
