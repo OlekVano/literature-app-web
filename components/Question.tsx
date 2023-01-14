@@ -1,5 +1,5 @@
-import Image from "next/image"
-import { isLink } from "../utils"
+import Image from 'next/image'
+import { isImage } from '../utils'
 
 interface State {
   question: string
@@ -20,7 +20,7 @@ export default function Question({ state, validated, selectedOption, setSelected
 
   if (state == null) return <></>
 
-  const isImageQuestion = isLink(state.options[0])
+  const isImageQuestion = isImage(state.options[0])
 
   return (
     <div>
@@ -36,7 +36,7 @@ export default function Question({ state, validated, selectedOption, setSelected
               </div>
               <label htmlFor={stringToId(option)} className='relative block flex-1 s:text-2xl text-xl'>
                 {
-                  isImageQuestion ? <Image src={option} alt='Writer' fill className='pointer-events-none select-none p-3 object-cover'></Image> :
+                  isImageQuestion ? <Image src={`/static/${option}`} alt='Writer' fill className='pointer-events-none select-none p-3 object-cover'></Image> :
                   <>{option}</>
                 }
 
