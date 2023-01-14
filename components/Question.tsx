@@ -15,8 +15,6 @@ export default function Question({ state, validated, selectedOption, setSelected
 
 
   function handleInputClick(option: string) {
-    console.log(option)
-    console.log(validated)
     setSelectedOption(option)
   }
 
